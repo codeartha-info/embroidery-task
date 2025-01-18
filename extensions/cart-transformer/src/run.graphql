@@ -1,0 +1,28 @@
+query RunInput {
+  cart {
+    lines {
+      id
+      quantity
+      color: attribute(key: "color") {
+        value
+      }
+      cost {
+        amountPerQuantity {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          goldprice: metafield(key: "embroidery_gold_price", namespace: "embroidery") {
+            value
+          }
+          whiteprice: metafield(key: "embroidery_white_price", namespace: "embroidery") {
+            value
+          }
+        }
+      }
+    }
+  }
+}
